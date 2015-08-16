@@ -1,0 +1,7 @@
+---- About ----
+
+nim-vidhdr is a Nim module for determining the type of an image from a given file, filename, or sequence of bytes. It can detect many common video formats.
+
+---- License ----
+
+nim-vidhdr is released under the MIT open source license.
