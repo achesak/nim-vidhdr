@@ -6,7 +6,7 @@
 
 ## nim-vidhdr is a Nim module for determining the type of video files.
 ##
-## List of detected formats:
+## List of detectable formats:
 ##
 ## - MPEG4 - MPEG-4 video file - VideoType.MPEG4
 ## - MOV - QuickTime movie file - VideoType.MOV
@@ -20,6 +20,7 @@
 ## - AVI - Windows Audio/Video Interleave file - VideoType.AVI
 ## - DAT - Video CD MPEG or MPEG1 movie file - VideoType.DAT
 ## - THP - Wii/Gamecube video file - VideoType.THP
+## - Unknown format - VideoType.Other
 ##
 ## Note that this should ONLY be used when you are certain that the file being testing is a video file.
 ## Some formats, in particular OGV, WMV, and DAT, have the same file signatures as other widely known formats
@@ -29,9 +30,11 @@
 proc int2ascii(i : seq[int8]): string = 
     ## Converts a sequence of integers into a string containing all of the characters.
     
+    let h = high(uint8).int + 1
+    
     var s : string = ""
     for j, value in i:
-        s = s & (chr(int(value)))
+        s = s & chr(value %% h)
     return s
 
 
