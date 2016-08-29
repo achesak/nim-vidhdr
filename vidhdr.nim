@@ -27,6 +27,9 @@
 ## that could cause issues if those are tested.
 
 
+import os
+
+
 proc int2ascii(i : seq[int8]): string = 
     ## Converts a sequence of integers into a string containing all of the characters.
     
@@ -184,3 +187,13 @@ proc testVideo*(data : seq[int8]): VideoType =
         return VideoType.THP
     else:
         return VideoType.Other
+
+
+# When run as it's own program, determine the type of the provided video file:
+when isMainModule:
+    
+    if paramCount() < 2:
+        echo("Invalid number of parameters. Usage:\nvidhdr [filename1] [filename2] ...")
+    
+    for i in 1..paramCount():
+        echo("Detected file type for \"" & paramStr(i) & "\": " & $testVideo(paramStr(i)))

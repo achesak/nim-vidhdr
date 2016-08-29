@@ -10,6 +10,10 @@ Usage:
     testVideo(filename : string)
     testVideo(data : seq[int8])
 
+nim-vidhdr can also be used as a command line program:
+
+    vidhdr [filename1] [filename2] ...
+
 List of detectable formats:
 
 * MPEG4 - MPEG-4 video file - `VideoType.MPEG4`
